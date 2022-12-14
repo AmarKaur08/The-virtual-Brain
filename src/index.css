@@ -1,0 +1,10 @@
+*{
+  margin:0px;
+  padding:0px;
+  font-family:sans-serif;
+  
+  
+}
+body{
+  background:linear-gradient(to right, rgb(212, 0, 255), rgb(17, 255, 0));
+}
