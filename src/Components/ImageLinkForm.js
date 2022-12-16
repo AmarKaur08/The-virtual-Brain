@@ -9,7 +9,7 @@ const ImageLinkForm=()=>{
           <div className="main2">
             <div className="borderdecor">
             <input type="text" className="inputdecor"/>
-            <button className="butdecor">Detect</button>
+            <button className="butdecor" value="Detect">Detect</button>
             </div>
             </div>  
                    
