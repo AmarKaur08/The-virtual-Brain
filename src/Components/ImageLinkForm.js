@@ -7,8 +7,10 @@ const ImageLinkForm=()=>{
           This virtual brain will detect faces in your pictures.Give it a try!!!!!!
           </p> 
           <div className="main2">
+            <div className="borderdecor">
             <input type="text" className="inputdecor"/>
             <button className="butdecor">Detect</button>
+            </div>
             </div>  
                    
       </div>    

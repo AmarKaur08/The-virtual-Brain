@@ -5,7 +5,8 @@
   "dependencies": {
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-parallax-tilt": "^1.7.76"
+    "react-parallax-tilt": "^1.7.76",
+    "react-tsparticles": "^2.6.0"
   },
   "scripts": {
     "start": "react-scripts start",

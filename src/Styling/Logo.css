@@ -2,7 +2,7 @@
   height: 100px;
   width:100px; 
   background:linear-gradient(to right, rgb(212, 0, 255) 0%, rgb(17, 255, 0) 100%);
-  border: 5px solid;
+  border: 5px solid rgb(117, 18, 117);
   margin-left: 30px;
   margin-top: 0px;
   border-radius: 100px;
