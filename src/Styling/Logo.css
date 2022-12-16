@@ -1,0 +1,17 @@
+.logodecor{
+  height: 100px;
+  width:100px; 
+  background:linear-gradient(to right, rgb(212, 0, 255) 0%, rgb(17, 255, 0) 100%);
+  border: 5px solid;
+  margin-left: 30px;
+  margin-top: 0px;
+  border-radius: 100px;
+  /* padding: 3px; */
+   
+}
+img{
+  height: 100px;
+  width:100px;
+  border-radius: 100px;
+  
+}

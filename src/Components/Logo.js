@@ -1,10 +1,14 @@
 import React from 'react';
 import '../Styling/Logo.css';
-import tilt from "react-parallax-tilt";
-
+import Tilt from "react-parallax-tilt";
+// import './creativity.png'
 const Logo=()=>{
   return(
-    <h1>logo</h1>
+    <Tilt>
+      <div className="logodecor">
+        <img src="https://previews.123rf.com/images/lumut/lumut1702/lumut170201633/72830468-brain-logo-template.jpg" alt="logo"/>        
+      </div>
+    </Tilt>
   );
 }
 export default Logo
