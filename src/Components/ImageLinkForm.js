@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Styling/ImageLinkForm.css';
-const ImageLinkForm=()=>{
+const ImageLinkForm=({onInputChange,onButtonSubmit})=>{
   return(    
       <div className="center" > 
         <p className="linkdecor center">
@@ -8,8 +8,8 @@ const ImageLinkForm=()=>{
           </p> 
           <div className="main2">
             <div className="borderdecor">
-            <input type="text" className="inputdecor"/>
-            <button className="butdecor" value="Detect">Detect</button>
+            <input type="text" className="inputdecor" onChange={onInputChange}/>
+            <button className="butdecor" value="Detect" onClick={onButtonSubmit}>Detect</button>
             </div>
             </div>  
                    
