@@ -6,7 +6,8 @@ import Logo from "./Components/Logo.js";
 import ImageLinkForm from './Components/ImageLinkForm'
 import Rank from "./Components/Rank.js";
 import ParticlesBg from 'particles-bg';
-import FaceDetector from './Components/FaceDetector'
+import FaceDetector from './Components/FaceDetector';
+import Register from './Components/Register'
 
 class App extends Component {
   constructor(){
@@ -14,7 +15,8 @@ class App extends Component {
     this.state={
       input:'',
       imageUrl:'',
-      route:'_signin_'
+      route:'_signin_',
+      isSignedin:false
     }
   }
   onInputChange=(event)=>
@@ -28,15 +30,24 @@ class App extends Component {
   }
   onRouteChange=(Route)=>{
    this.setState({route:Route})
+   if(Route==='signout')
+   {
+ this.setState({isSignedin:false})
+   }
+   else if(Route==='home')
+   {
+    this.setState({isSignedin:true})
+   }
   }
   render(){
   return (
     <div className="App">
       <ParticlesBg color="#ffffff" num={200} type="cobweb"  bg={true} />
-      <Navigation onRouteChange={this.onRouteChange}/>  
+      <Navigation isSignedin={this.state.isSignedin} onRouteChange={this.onRouteChange}/>  
       {    
+      this.state.route==='home'?<><Logo /><Rank /><ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} /><FaceDetector imageUrl={this.state.imageUrl} /></> :
       this.state.route === '_signin_'? <SignIn onRouteChange={this.onRouteChange}/>:
-      <><Logo /><Rank /><ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} /><FaceDetector imageUrl={this.state.imageUrl} /></>}
+      <Register onRouteChange={this.onRouteChange}/>}
     </div>
   );
   }
