@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import "./App.css";
 import Navigation from "./Components/Navigation.js";
+import SignIn from "./Components/SignIn.js";
 import Logo from "./Components/Logo.js";
 import ImageLinkForm from './Components/ImageLinkForm'
 import Rank from "./Components/Rank.js";
@@ -12,7 +13,8 @@ class App extends Component {
     super();
     this.state={
       input:'',
-      imageUrl:''
+      imageUrl:'',
+      route:'_signin_'
     }
   }
   onInputChange=(event)=>
@@ -24,15 +26,17 @@ class App extends Component {
   console.log('click');
   this.setState({imageUrl:this.state.input})
   }
+  onRouteChange=(Route)=>{
+   this.setState({route:Route})
+  }
   render(){
   return (
     <div className="App">
       <ParticlesBg color="#ffffff" num={200} type="cobweb"  bg={true} />
-      <Navigation />
-      <Logo/>  
-      <Rank/>    
-      <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>      
-      <FaceDetector imageUrl={this.state.imageUrl}/>
+      <Navigation onRouteChange={this.onRouteChange}/>  
+      {    
+      this.state.route === '_signin_'? <SignIn onRouteChange={this.onRouteChange}/>:
+      <><Logo /><Rank /><ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} /><FaceDetector imageUrl={this.state.imageUrl} /></>}
     </div>
   );
   }

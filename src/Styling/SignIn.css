@@ -1,0 +1,36 @@
+.formdecor{
+  display:flex;
+  flex-direction: column;  
+  align-items: center;
+  box-shadow:5px 10px 10px grey;
+   width:60%; 
+   margin:auto;
+   padding: 3px;
+}
+.inputdecor2{
+  width:25%;
+margin:3px;
+padding: 5px;
+background-color: black;
+color: whitesmoke;
+}
+.btn{
+  padding: 5px;
+  margin:5px;
+  background-color: transparent;
+  border-radius: 0.4rem;
+}
+.btn:hover{
+  background-color: azure;
+}
+.linkdecor1{
+  color: white;
+  text-decoration: none;
+}
+.linkdecor1:hover{
+  color:yellow;
+  
+}
+.textdecor{
+ font-weight: bolder;
+}
