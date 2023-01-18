@@ -42,7 +42,7 @@ class App extends Component {
   render(){
   return (
     <div className="App">
-      <ParticlesBg color="#ffffff" num={200} type="cobweb"  bg={true} />
+      <ParticlesBg color="#ffffff" num={120} type="cobweb"  bg={true} />
       <Navigation isSignedin={this.state.isSignedin} onRouteChange={this.onRouteChange}/>  
       {    
       this.state.route==='home'?<><Logo /><Rank /><ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} /><FaceDetector imageUrl={this.state.imageUrl} /></> :
