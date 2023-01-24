@@ -9,6 +9,7 @@ import ParticlesBg from 'particles-bg';
 import FaceDetector from './Components/FaceDetector';
 import Register from './Components/Register'
 
+
 class App extends Component {
   constructor(){
     super();
@@ -19,6 +20,13 @@ class App extends Component {
       isSignedin:false
     }
   }
+  //testing of backend
+  // componentDidMount(){
+  // fetch('https://virtualbrain-backend.amarpreetkaur2.repl.co/')
+  // .then(response=>response.json())
+  // .then(data=>console.log(data));
+  // }
+  //tetsing over///////////////////////
   onInputChange=(event)=>
   {
     console.log(event.target.value);
