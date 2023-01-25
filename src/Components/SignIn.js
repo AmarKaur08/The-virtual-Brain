@@ -28,15 +28,35 @@ class  SignIn extends React.Component{
         password:this.state.signInPass
       })
     })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data);
+      if(data==='Success')
+      {
+        this.props.onRouteChange('home');
+      }
+      else{
+        this.props.onRouteChange('register');
+      }
+    })
     // .then(data=>console.log(data.json()))
-    this.props.onRouteChange('home');
+  //   if(this.state.signInPass=='parul1')
+  //   {
+  //   this.props.onRouteChange('home');
+  //   }
+  //   else{
+  // //     return(
+  // // <div><p>User not found!!!</p></div>
+  // //     );
+  // this.props.onRouteChange('register');
+    // }
   }
 
   render(){
     const {onRouteChange}=this.props;
   return(
     <div>
-    <form method='post'>
+    <form >
       <div className="formdecor">
       <p className="textdecor">Sign In</p>
       <br></br>
