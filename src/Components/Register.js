@@ -1,20 +1,77 @@
 import React from 'react';
 import '../Styling/SignIn.css'
-const Register=({onRouteChange})=>{
-  return(
-    <div>
-    <form >
-      <div className="formdecor">
-      <p className="textdecor">Register</p>
-      <br></br>
-      <label htmlFor="name">Name</label><input className="inputdecor2" type='test' required />
-      <label htmlFor="email">Email</label><input className="inputdecor2" type='email' required />
-      <label htmlFor="password">Password</label><input className="inputdecor2" type='password' name="password" required/>
-      <button onClick={()=>onRouteChange('home')} className="btn" name="button">Register</button>
-      <div><p onClick={()=>onRouteChange('_signin_')} className="linkdecor1" value="Register">Sign In</p></div>
+class Register extends React.Component{
+ constructor(props)
+ {
+   super();
+   {
+   this.state={
+    email:'',
+    password:'',
+    name:''
+   }
+   }
+ }
+ onEmailChange=(event)=>
+  {
+    this.setState({email:event.target.value})
+  }
+  onPassChange=(event)=>
+  {
+    this.setState({password:event.target.value})
+  }
+  onNameChange=(event)=>
+  {
+    this.setState({name:event.target.value})
+  }
+  onSubmitRegister = async (e) => {
+    e.preventDefault();
+    try {
+      let res = await fetch("https://virtualbrain-backend.amarpreetkaur2.repl.co/register", {
+        method: "POST",
+        headers:{'content-type':'application/json'},
+        body: JSON.stringify({
+          email:this.state.email,
+          password:this.state.password,
+          name:this.state.name
+        }),
+      });
+      let resJson = await res.json();
+      if (resJson) {
+        console.log(resJson);
+        this.props.loaduser(resJson)
+        {this.props.onRouteChange('home')};
+      } else {
+        {this.props.onRouteChange('register')};
+      }
+    } catch (err) {
+      console.log("errorrrrrrrrrrrrrrrr",err);
+    }
+  };
+  render(){
+    const{onRouteChange}=this.props;
+    return(
+      <div>
+      <form >
+        <div className="formdecor">
+        <p className="textdecor">Register</p>
+        <br></br>
+        <label htmlFor="name">Name</label><input 
+        onChange={this.onNameChange}
+        className="inputdecor2" type='test' required />
+        <label htmlFor="email">Email</label><input 
+        onChange={this.onEmailChange}
+        className="inputdecor2" type='email' required />
+        <label htmlFor="password">Password</label><input 
+        onChange={this.onPassChange}
+        className="inputdecor2" type='password' name="password" required/>
+        <button onClick={this.onSubmitRegister} className="btn" name="button">Register</button>
+        <div><p onClick={()=>onRouteChange('_signin_')} className="linkdecor1" value="Register">Sign In</p></div>
+        </div>
+      </form>
       </div>
-    </form>
-    </div>
-  );
+    );
+  }
+  
 }
 export default Register

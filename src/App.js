@@ -17,7 +17,14 @@ class App extends Component {
       input:'',
       imageUrl:'',
       route:'_signin_',
-      isSignedin:false
+      isSignedin:false,
+      user:{
+        id:'',
+        name:'',
+        email:'',
+        enteries:'0',
+        joined:''
+      }
     }
   }
   //testing of backend
@@ -27,6 +34,17 @@ class App extends Component {
   // .then(data=>console.log(data));
   // }
   //tetsing over///////////////////////
+  loaduser=(data)=>
+  {
+    this.setState({user:{
+        id:data.id,
+        name:data.name,
+        email:data.email,
+        password:data.password,
+        enteries:data.enteries,
+        joined:data.joined
+      }})
+  }
   onInputChange=(event)=>
   {
     console.log(event.target.value);
@@ -53,9 +71,9 @@ class App extends Component {
       <ParticlesBg color="#ffffff" num={120} type="cobweb"  bg={true} />
       <Navigation isSignedin={this.state.isSignedin} onRouteChange={this.onRouteChange}/>  
       {    
-      this.state.route==='home'?<><Logo /><Rank /><ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} /><FaceDetector imageUrl={this.state.imageUrl} /></> :
-      this.state.route === '_signin_'? <SignIn onRouteChange={this.onRouteChange}/>:
-      <Register onRouteChange={this.onRouteChange}/>}
+      this.state.route==='home'?<><Logo /><Rank name={this.state.user.name} enteries={this.state.user.enteries}/><ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} /><FaceDetector imageUrl={this.state.imageUrl} /></> :
+      this.state.route === '_signin_'? <SignIn loaduser={this.loaduser} onRouteChange={this.onRouteChange}/>:
+      <Register loaduser={this.loaduser} onRouteChange={this.onRouteChange}/>}
     </div>
   );
   }
