@@ -33,7 +33,8 @@ class  SignIn extends React.Component{
         }),
       });
       let resJson = await res.json();
-      if (res.status === 200) {
+      if (resJson.id) {
+        this.props.loaduser(resJson);
         {this.props.onRouteChange('home')};
       } else {
         {this.props.onRouteChange('register')};

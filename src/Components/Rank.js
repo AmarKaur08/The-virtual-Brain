@@ -1,14 +1,14 @@
 import React from 'react';
 import '../Styling/Rank.css'
-const Rank=()=>{
+const Rank=({name,enteries})=>{
   return(
     <div>
     <div className="rankdecor">
-      {'Hey There!! Your current Rank is...'}
+      {`${name.toUpperCase()}!!, Your current Rank is...`}
       {/* //just js things u can write without {} also */}
     </div>
     <div className="rankdecor">
-    {'#2'}
+    {enteries}
   </div>
   </div>
   );

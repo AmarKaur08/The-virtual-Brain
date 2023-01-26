@@ -1,6 +1,9 @@
 .rankdecor{
   text-align: center;
   padding:3px;
-  color: aliceblue
-  ;
+  color: aliceblue;
+  font-weight: bolder;
+  font-size:1.2rem;
+  
+  
 }

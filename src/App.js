@@ -50,9 +50,29 @@ class App extends Component {
     console.log(event.target.value);
     this.setState({input:event.target.value})
   }
-  onButtonSubmit=()=>{
-  console.log('click');
+  onButtonSubmit= (e)=>{
+  console.log(e);
   this.setState({imageUrl:this.state.input})
+  try {
+     fetch("https://virtualbrain-backend.amarpreetkaur2.repl.co/image", {
+      method: "PUT",
+      headers:{'content-type':'application/json'},
+      body: JSON.stringify({
+        id:this.state.user.id
+      }),
+    }).then(res=> res.json())
+    .then(count=>
+      {
+        // this.setState({user:{
+        //   enteries:count
+        // }})
+        this.setState(Object.assign(this.state.user,{enteries:count}))
+      })
+    
+  } catch (err) {
+    console.log("errorrrrrrrrrrrrrrrr",err);
+  }
+  
   }
   onRouteChange=(Route)=>{
    this.setState({route:Route})
