@@ -22,7 +22,7 @@ class  SignIn extends React.Component{
   }
 
   onSubmitSignIn = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     try {
       let res = await fetch("https://virtualbrain-backend.amarpreetkaur2.repl.co/signin", {
         method: "POST",
@@ -36,9 +36,9 @@ class  SignIn extends React.Component{
       if (resJson.id) {
         this.props.loaduser(resJson);
         {this.props.onRouteChange('home')};
-      } else {
-        {this.props.onRouteChange('register')};
-      }
+      } //else {
+      //   {this.props.onRouteChange('register')};
+      // }
     } catch (err) {
       console.log("errorrrrrrrrrrrrrrrr",err);
     }
@@ -114,7 +114,7 @@ class  SignIn extends React.Component{
     const {onRouteChange}=this.props;
   return(
     <div>
-    <form >
+    <form onSubmit={(e)=>e.preventDefault()}>
       <div className="formdecor">
       <p className="textdecor">Sign In</p>
       <br></br>

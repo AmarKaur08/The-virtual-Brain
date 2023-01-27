@@ -25,11 +25,11 @@ class Register extends React.Component{
     this.setState({name:event.target.value})
   }
   onSubmitRegister = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     try {
       let res = await fetch("https://virtualbrain-backend.amarpreetkaur2.repl.co/register", {
         method: "POST",
-        headers:{'content-type':'application/json'},
+        headers:{'content-type':'application/json','charset':'UTF-8'},
         body: JSON.stringify({
           email:this.state.email,
           password:this.state.password,
@@ -37,13 +37,13 @@ class Register extends React.Component{
         }),
       });
       let resJson = await res.json();
-      if (resJson) {
+      if (resJson.name!=='' && resJson.email!=='' && resJson.password!=='') {
         console.log(resJson);
         this.props.loaduser(resJson)
         {this.props.onRouteChange('home')};
-      } else {
-        {this.props.onRouteChange('register')};
-      }
+       } //else {
+      //   {this.props.onRouteChange('register')};
+      // }
     } catch (err) {
       console.log("errorrrrrrrrrrrrrrrr",err);
     }
@@ -52,7 +52,7 @@ class Register extends React.Component{
     const{onRouteChange}=this.props;
     return(
       <div>
-      <form >
+      <form method='post' onSubmit={(e)=>e.preventDefault()}>
         <div className="formdecor">
         <p className="textdecor">Register</p>
         <br></br>
@@ -65,7 +65,7 @@ class Register extends React.Component{
         <label htmlFor="password">Password</label><input 
         onChange={this.onPassChange}
         className="inputdecor2" type='password' name="password" required/>
-        <button onClick={this.onSubmitRegister} className="btn" name="button">Register</button>
+        <button onClick={this.onSubmitRegister} className="btn" name="button" type='submit'>Register</button>
         <div><p onClick={()=>onRouteChange('_signin_')} className="linkdecor1" value="Register">Sign In</p></div>
         </div>
       </form>
